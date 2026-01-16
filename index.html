@@ -1,27 +1,76 @@
-document.getElementById('salaryForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const basicPay = parseFloat(document.getElementById('basicPay').value);
-    const daPercent = parseFloat(document.getElementById('da').value);
-    const hikePercent = parseFloat(document.getElementById('hike').value);
-    
-    if (isNaN(basicPay) || isNaN(daPercent) || isNaN(hikePercent)) {
-        document.getElementById('result').innerHTML = 'Please enter valid numbers.';
-        return;
-    }
-    
-    // Calculate new basic pay after hike
-    const newBasicPay = basicPay * (1 + hikePercent / 100);
-    
-    // Calculate DA amount
-    const daAmount = newBasicPay * (daPercent / 100);
-    
-    // Total salary (basic + DA; add other allowances if needed)
-    const totalSalary = newBasicPay + daAmount;
-    
-    document.getElementById('result').innerHTML = `
-        <p>New Basic Pay: ₹${newBasicPay.toFixed(2)}</p>
-        <p>DA Amount: ₹${daAmount.toFixed(2)}</p>
-        <p>Total Estimated Salary: ₹${totalSalary.toFixed(2)}</p>
-    `;
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian 8th Pay Commission Updates</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>8th Pay Commission India</h1>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#updates">Updates</a></li>
+                <li><a href="#calculator">Salary Calculator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="overview" class="hero">
+        <h2>Overview of the 8th Central Pay Commission</h2>
+        <p>The 8th Central Pay Commission is expected to review and recommend revisions to salaries, allowances, and pensions for central government employees. Following the 7th CPC (implemented in 2016), the next commission is anticipated around 2026. Stay updated here for the latest news, recommendations, and tools.</p>
+    </section>
+
+    <section id="updates">
+        <h2>Updates Timeline</h2>
+        <div class="timeline">
+            <div class="update">
+                <h3>2025: Announcement and Committee Formation</h3>
+                <p>The Government of India announces the formation of the 8th Pay Commission. A committee of experts is set up to review pay structures, inflation, and economic factors.</p>
+            </div>
+            <div class="update">
+                <h3>2026: Interim Report and Public Consultations</h3>
+                <p>The commission releases an interim report for feedback. Public hearings and consultations with employee unions begin.</p>
+            </div>
+            <div class="update">
+                <h3>2027: Final Report Submission</h3>
+                <p>The final recommendations are submitted to the government, including proposed pay hikes, DA adjustments, and pension reforms.</p>
+            </div>
+            <div class="update">
+                <h3>2028: Government Approval and Implementation</h3>
+                <p>The Cabinet approves the recommendations. Implementation begins, with arrears paid retrospectively.</p>
+            </div>
+            <div class="update">
+                <h3>2024 (Current): Pre-Announcement Phase</h3>
+                <p>As of now, no official announcement has been made. Discussions in Parliament and media speculation suggest it could be formed soon. Follow official sources for updates.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator">
+        <h2>Salary Calculator</h2>
+        <p>Estimate your new salary based on basic pay, DA, and expected hike percentage.</p>
+        <form id="salaryForm">
+            <label for="basicPay">Basic Pay (₹):</label>
+            <input type="number" id="basicPay" required>
+            
+            <label for="da">DA (% of Basic Pay):</label>
+            <input type="number" id="da" required>
+            
+            <label for="hike">Expected Pay Hike (%):</label>
+            <input type="number" id="hike" required>
+            
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="result"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 8th Pay Commission Updates. For official info, visit <a href="https://www.doe.gov.in" target="_blank">DoE India</a>. This is not official; use at your own risk.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
